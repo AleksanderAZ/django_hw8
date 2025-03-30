@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Домашня сторінка</title>
+    </head>
+    <body>
+        <h1>Welcome!</h1>
+        {% if user.is_authenticated %}
+            <p>Привіт, {{ user.email }}</p>
+            {% if user.is_superuser %}
+                <a href="{% url 'transfer_list' %}"> Управління переказами</a>
+            {% endif %}
+            <a href="{% url 'logout' %}">Вийти</a>
+        {% else %}
+            <a href="{% url 'login' %}">Увійти</a>
+        {% endif %}
+    </body>
+</html>

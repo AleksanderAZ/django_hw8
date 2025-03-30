@@ -1,0 +1,6 @@
+<h2>Delete "{{ transfer.title }}"?</h2>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit"> Yes, delete</button>
+</form>
+<a href="{% url 'transfer_list' %}">Back to the list</a>

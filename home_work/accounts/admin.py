@@ -135,4 +135,4 @@ class CustomUserAdmin(BaseUserAdmin):
     activate_users.short_description = 'Активація вибраних користувачів'
 
     class Media:
-        js = ('js/admin_custom.js')
+        js = ('admin/js/admin_custom.js', )

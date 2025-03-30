@@ -1,11 +1,17 @@
-(function($) {
-    $(document).ready(function() {
-            $('input[name="is_active"]').change(
-                function() {
-                    if (!confirm('Змінити статус активності')) {
-                        $(this).prop('checked', !$(this).prop.('checked'));
-                    }
-                }
-            );
-    });
+document.addEventListener('DOMContentLoaded', function() {
+    if (typeof django !== 'undefined' && django.jQuery) {
+        (function($) {
+            $(document).ready(function() {
+                    $('input[name="is_active"]').change(
+                        function() {
+                            if (!confirm('Змінити статус активності')) {
+                                $(this).prop('checked', !$(this).prop.('checked'));
+                            }
+                        }
+                    );
+            });
+        });
+    } else {
+        console.error('django.jQuery is not available');
+    }
 });

@@ -1,0 +1,29 @@
+<a href="{% url 'transfer_create' %}">+ Add task</a>
+{% if messages %}
+    <ul>
+        {% for message in messages %}
+            <li class="{{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+<div>
+    <a href="?completed=true">Completed transfer</a>
+    <a href="?completed=false">In anticipation transfers</a>
+    <a href="?">All transfers</a>
+</div>
+<br>
+<div>
+    <p>Total: {{ total_transfers }}</p>
+    <p>Done: {{ completed_transfers }}</p>
+    <p>In progress: {{ in_progress_transfers }}</p>
+</div>
+<ul>
+    {% for transfer in money_transfers %}
+        <li>
+            {{ transfer.description }} {{ transfer.userfrom }} {{ transfer.userto }} {{ transfer.payment}} - {{ transfer.completed|yesno:'Done, In anticipation' }}
+            <a href="{% url 'transfer_delete' transfer.id %}">Delete</a>
+        </li>
+    {% empty %}
+        <li>No transfers</li>
+    {% endfor %}
+</ul>
